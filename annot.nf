@@ -187,7 +187,7 @@ process predict_tRNA {
 
 process press_ncRNA_cms {
     input:
-    val ncrna_models
+    file ncrna_models
 
     output:
     file 'models.cm*' into ncrna_cmindex
@@ -330,7 +330,7 @@ if (params.run_ratt) {
         input:
         file ref_annot
         file ref_seq
-        val go_obo
+        file go_obo
 
         output:
         file '*.embl' into ref_embl
@@ -1044,7 +1044,7 @@ process annotate_pfam {
     file 'pfam.gff3' from pfam_gff3
     file 'with_ortho.gff3' from gff3_with_ortho_transferred
     file 'with_ortho.gaf' from gaf_with_ortho_transferred
-    val go_obo
+    file go_obo
 
     output:
     file 'with_pfam.gff3' into gff3_with_pfam
@@ -1303,7 +1303,7 @@ if (params.do_contiguation && params.do_circos) {
         file 'genes.txt' from circos_input_genes_chr.first()
         file 'gaps.txt' from circos_input_gaps_chr.first()
         file 'core.txt' from core_comp_circos_chr.first()
-        val circos_conffile
+        file circos_conffile
         val chromosome from circos_chromosomes
 
         output:
@@ -1329,8 +1329,8 @@ if (params.do_contiguation && params.do_circos) {
         file 'genes.txt' from circos_input_genes_bin.first()
         file 'gaps.txt' from circos_input_gaps_bin.first()
         file 'core.txt' from core_comp_circos_bin.first()
-        val circos_binconffile
-        val binmap from circos_binmap
+        file circos_binconffile
+        file binmap from circos_binmap
 
         output:
         set file('bin.png'), val(binmap) into circos_bin_output
@@ -1387,7 +1387,7 @@ if (params.make_embl) {
         input:
         file 'embl_in.gff3' from embl_full_gff
         file embl_full_seq
-        val go_obo
+        file go_obo
 
         output:
         file '*.embl' into embl_out
