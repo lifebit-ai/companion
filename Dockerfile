@@ -1,7 +1,7 @@
 #
 #  From this base-image / starting-point
 #
-FROM debian:testing
+FROM debian:stretch
 
 #
 #  Authorship
